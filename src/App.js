@@ -1,4 +1,4 @@
-import Contact from './Components/Contact';
+import Contacts from './Components/Contacts';
 import Header from './Components/Header';
 
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -10,10 +10,7 @@ const  App = () => {
     <div className="App">
       <Header />
       <div className='container'>
-      <Contact 
-      name = "Stephen" 
-      email = "steve@email.com"
-       phone = "0543431263"/>
+      <Contacts />
       </div>
       
     </div>
