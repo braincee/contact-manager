@@ -1,14 +1,15 @@
 import React from 'react'
 
-const Contact = () => {
+const Contact = (props) => {
+    const { name, email, phone } = props;
   return (
-    <div>
+    <div className='card card-body mb-3'>
      <h4>
-        Stephen
+        {name}
      </h4>
-     <ul>
-        <li> Email: steve@email.com </li>
-        <li> Phone: 0543431263 </li>
+     <ul className='list-group'>
+        <li className='list-group-item'> Email: {email}</li>
+        <li className='list-group-item'> Phone: {phone}</li>
      </ul>
     </div>
   )
