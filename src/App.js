@@ -1,9 +1,10 @@
-import Contacts from './Components/Contacts';
-import Header from './Components/Header';
+import Contacts from './Components/contacts/Contacts';
+import Header from './Components/layouts/Header';
 import { Provider } from './context';
  
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.css';
+import AddContact from './Components/contacts/AddContact';
 
 
 const  App = () => {
@@ -12,6 +13,7 @@ const  App = () => {
       <div className="App">
         <Header />
         <div className='container'>
+          <AddContact />
         <Contacts />
         </div>
         
