@@ -8,13 +8,33 @@ class AddContact extends Component {
     state = {
         name: '',
         email: '',
-        phone: ''
+        phone: '',
+        errors: {}
     };
 
     onSubmit = (dispatch, event) => {
         event.preventDefault();
 
         const { name, email, phone } = this.state;
+
+        // Error handling
+
+        if (name === '') {
+          this.setState({errors: {name: 'Name is required'}});
+          return;
+        }
+
+        if (email === '') {
+          this.setState({errors: {email: 'Email is required'}});
+          return;
+        }
+        
+        if (phone === '') {
+            this.setState({errors: {phone: 'Phone Number is required'}});
+            return;
+        }
+
+        // Context API
 
         const newContact = {
             id: uuidv4(),
@@ -24,10 +44,13 @@ class AddContact extends Component {
         }
        dispatch({type: 'ADD_CONTACT', payload: newContact});
 
+       // Clear fields
+
        this.setState({
         name: '',
         email: '',
-        phone: ''
+        phone: '', 
+        errors: {}
        });
         
     }
@@ -35,7 +58,7 @@ class AddContact extends Component {
     onChange = (event) => this.setState({[event.target.name]: event.target.value})
 
   render() {
-        const { name, email, phone } = this.state;
+        const { name, email, phone, errors } = this.state;
 
         return (
           <Consumer>
@@ -52,6 +75,7 @@ class AddContact extends Component {
                    placeholder='Enter your name'
                    value = {name}
                    onChange = {this.onChange}
+                   error = {errors.name}
                    />
                    <TextInptGroup
                    Label = "Email"
@@ -60,6 +84,7 @@ class AddContact extends Component {
                    placeholder='Enter your email'
                    value = {email}
                    onChange = {this.onChange}
+                   error = {errors.email}
                    />
                    <TextInptGroup 
                    label = 'Phone'
@@ -67,6 +92,7 @@ class AddContact extends Component {
                    placeholder='Enter your phone'
                    value = {phone}
                    onChange = {this.onChange}
+                   error = {errors.phone}
                    />
                    <input type="submit" value="Add Contact"
                    className="btn btn-secondary btn-block mt-2"
