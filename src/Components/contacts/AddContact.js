@@ -52,7 +52,10 @@ class AddContact extends Component {
         phone: '', 
         errors: {}
        });
-        
+
+       // redirect
+
+       this.props.history.push('/');   
     }
 
     onChange = (event) => this.setState({[event.target.name]: event.target.value})
