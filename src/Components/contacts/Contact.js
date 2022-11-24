@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Consumer } from '../../context';
+import axios from 'axios';
+import { NavLink } from 'react-router-dom';
 
 class Contact extends Component {
 
@@ -7,9 +9,15 @@ class Contact extends Component {
     showContactInfo: false
   };
 
-  onDeleteClick = (id, dispatch) => {
-    dispatch({type: 'DELETE_CONTACT', payload: id})
-  }
+  onDeleteClick = async (id, dispatch) => {
+
+    try {
+    await axios.delete(`https://jsonplaceholder.typicode.com/users/${id}`)
+     dispatch({type: 'DELETE_CONTACT', payload: id})
+    } catch(e) {
+      dispatch({type: 'DELETE_CONTACT', payload: id})
+    }
+  };
 
   render() {
 
@@ -32,6 +40,15 @@ class Contact extends Component {
         style={{cursor: 'pointer', float: 'right', color: 'red'}}
         onClick={this.onDeleteClick.bind(this, id, dispatch)}
         />
+        <NavLink to = {`contact/edit/${id}`}>
+          <i className = 'fas fa-pencil-alt'
+           style={{
+            cursor: 'pointer',
+            float: 'right',
+            marginRight: '1rem'
+           }}
+          />
+        </NavLink>
         </h6>
         {showContactInfo ? ( <ul className='list-group'>
            <li className='list-group-item'> Email: {email}</li>

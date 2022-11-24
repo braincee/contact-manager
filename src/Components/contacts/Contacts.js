@@ -7,16 +7,16 @@ class Contacts extends React.Component {
        return (
         <Consumer>
            {value => {
-
             const { contacts } = value;
             return (
-            <div>
+            <>
+            <div className="display-4 mb-3"> List of Contacts</div>
                 {contacts.map(contact => 
                 <Contact 
                 key={contact.id}
                 contact={contact}
                 />)}
-            </div>
+            </>
             )
            }}
          </Consumer>
