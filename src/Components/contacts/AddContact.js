@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Consumer } from '../../context';
-import { v4 as uuidv4 } from 'uuid';
 import TextInptGroup from '../layouts/TextInptGroup';
+import axios from 'axios';
 
 class AddContact extends Component {
 
@@ -37,12 +37,13 @@ class AddContact extends Component {
         // Context API
 
         const newContact = {
-            id: uuidv4(),
             name,
             email, 
             phone,
         }
-       dispatch({type: 'ADD_CONTACT', payload: newContact});
+
+        axios.post('https://jsonplaceholder.typicode.com/users', newContact)
+        .then(response => dispatch({type: 'ADD_CONTACT', payload: response.data}));
 
        // Clear fields
 
