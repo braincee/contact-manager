@@ -15,16 +15,16 @@ const TextInptGroup = ({
 }) => {
     return (
         <div className='form-group'>
-        <label htmlFor={name}>{label}</label>
-        <input 
+        <label htmlFor={name} className='mb-3'>{label}</label>
+        <input
            type={type}
            name={name}
            placeholder={placeholder}
            value = {value}
            onChange = {onChange}
-           className={classnames('form-control form-control-lg', {'is-invalid': error})}
+           className={classnames('form-control form-control-lg mb-3', {'is-invalid': error})}
         />
-        {error && <div className = "invalid-feedback">{error}</div>}
+        {error && <div className = "invalid-feedback mb-3">{error}</div>}
         
     </div>
     );
