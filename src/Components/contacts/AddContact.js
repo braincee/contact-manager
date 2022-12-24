@@ -56,7 +56,7 @@ class AddContact extends Component {
 
        // redirect
 
-       this.props.history.push('/');   
+       this.props.history.push('/contacts');   
     }
 
     onChange = (event) => this.setState({[event.target.name]: event.target.value})
@@ -70,7 +70,7 @@ class AddContact extends Component {
               const { dispatch } = value;
               return (
                 <div className='card mb-3'>
-                <div className='card-header'>Add Contact</div>
+                <div className='card-header bg-secondary'>ADD CONTACT</div>
                 <div className='card-body'>
                   <form onSubmit={this.onSubmit.bind(this, dispatch)}>
                    <TextInptGroup 
@@ -82,7 +82,7 @@ class AddContact extends Component {
                    error = {errors.name}
                    />
                    <TextInptGroup
-                   Label = "Email"
+                   label = 'Email'
                    name = 'email'
                    type = 'email'
                    placeholder='Enter your email'
