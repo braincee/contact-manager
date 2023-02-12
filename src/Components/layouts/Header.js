@@ -36,10 +36,10 @@ const Header = () => {
           </div>
           <div className={nav ? 'nav-links' : 'nav-links-1'}>
             <div className='close'><RiCloseCircleFill size={40} onClick={handleNav}/></div>
-            <ul className="links">
-              <li><Link to='/' onClick={() => setNav(!nav)}>ADD</Link></li>
-              <li><Link to='/contacts' onClick={() => setNav(!nav)}>ALL CONTACTS</Link></li>
-              <li><Link to='/about' onClick={() => setNav(!nav)}>ABOUT</Link></li>
+            <ul className="links navbar-nav mr-auto">
+              <li><Link to='/' onClick={() => setNav(!nav)} className='nav-link'><i className='fa fa-plus'/>ADD</Link></li>
+              <li><Link to='/contacts' onClick={() => setNav(!nav)} className='nav-link'><i className='fa fa-home'/>ALL CONTACTS</Link></li>
+              <li><Link to='/about' onClick={() => setNav(!nav)} className='nav-link'><i className='fa fa-question'/>ABOUT</Link></li>
             </ul>
           </div>
         </nav>
